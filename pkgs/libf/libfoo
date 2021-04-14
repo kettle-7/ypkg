@@ -1,0 +1,10 @@
+# Example for a library
+Name=Example library that does nothing
+Architecture=any
+Version=69
+Url=https://github.com/linuxkettle/LinuxKettle/archive/refs/heads/main.zip
+
+# No dependencies or description
+
+[Install]
+echo 'Hello, I am on your computer now.'
