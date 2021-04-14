@@ -1,0 +1,12 @@
+Name=Pygments Python module
+Architecture=any
+Version=2.8.0
+Url=https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.8.0.tar.gz
+
+[Description]
+Pygments is a general syntax highlighter written in Python, for more than 300
+languages.
+
+[Install]
+cd */
+python3 setup.py install --optimize=1 || exit 1

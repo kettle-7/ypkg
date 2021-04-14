@@ -1,12 +1,11 @@
 # Simple example package
 Name=GNU Hello
 Architecture=any
-Version=1.0
+Version=2.10
 Url=https://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz
 
 [Depends]
-# Nothing, uncomment libfoo to test the dependency mechanism
-#libfoo
+# Put dependencies here, separated by newlines
 
 [Description]
 The GNU Hello program produces a familiar, friendly greeting. Yes, this is
@@ -24,5 +23,5 @@ notably including translation into other languages, please see the GNU Gettext
 distribution.
 
 [Install]
-cd *
+cd */
 ./configure && make -s && make -s install

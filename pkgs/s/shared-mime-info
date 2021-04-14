@@ -1,0 +1,22 @@
+Name=Shared Mime Info
+Architecture=any
+Version=2.1
+Url=https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/0ee50652091363ab0d17e335e5e74fbe/shared-mime-info-2.1.tar.xz
+
+[Depends]
+glib
+itstool
+libxml
+xmlto
+
+[Description]
+The Shared Mime Info package contains a MIME database. This allows central
+updates of MIME information for all supporting applications. 
+
+[Install]
+cd */
+mkdir build &&
+cd    build &&
+meson --prefix=/usr -Dupdate-mimedb=true .. &&
+ninja || exit 1
+ninja install || exit 1

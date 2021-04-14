@@ -1,0 +1,31 @@
+Name=libraries and utilities used for parsing XML files
+Architecture=any
+Version=2.9.10
+Url=http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
+
+[Description]
+Libxml2 is the XML C parser and toolkit developed for the Gnome project (but
+usable outside of the Gnome platform), it is free software available under the
+MIT License. XML itself is a metalanguage to design markup languages, i.e. text
+language where semantic and structure are added to the content using extra
+"markup" information enclosed between angle brackets. HTML is the most
+well-known markup language. Though the library is written in C a variety of
+language bindings make it available in other environments.
+
+[Install]
+wget -qO libxml2-2.9.10-security_fixes-1.patch http://www.linuxfromscratch.org/patches/blfs/10.1/libxml2-2.9.10-security_fixes-1.patch
+cd */
+
+patch -p1 -i ../libxml2-2.9.10-security_fixes-1.patch &&
+sed -i '/if Py/{s/Py/(Py/;s/)/))/}' python/{types.c,libxml.c} || exit 1
+
+if type icu-config; then # We have installed ICU
+    sed -i 's/ TRUE/ true/' encoding.c || exit 1
+fi
+
+./configure --prefix=/usr    \
+            --disable-static \
+            --with-history   \
+            --with-python=/usr/bin/python3 &&
+make &&
+make install || exit 1

@@ -1,0 +1,18 @@
+Name=GLib (version 2)
+Architecture=any
+Version=2.66.7
+Url=https://github.com/linuxkettle/ypkg/raw/main/empty.tar.gz
+
+[Depends]
+glib2
+
+[Description]
+GLib provides the core application building blocks for libraries and
+applications written in C. It provides the core object system used in GNOME,
+the main loop implementation, and a large set of utility functions for
+strings and common data structures.
+
+Not to be confused with glibc
+
+[Install]
+exit 0

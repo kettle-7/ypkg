@@ -1,0 +1,43 @@
+Name=GLib (version 2)
+Architecture=any
+Version=2.66.7
+Url=https://download.gnome.org/sources/glib/2.66/glib-$v.tar.xz
+
+[Depends]
+libxslt
+pcre
+dbus
+docbook-xml
+docbook-xsl
+gtk-doc
+
+[Description]
+GLib provides the core application building blocks for libraries and
+applications written in C. It provides the core object system used in GNOME,
+the main loop implementation, and a large set of utility functions for
+strings and common data structures.
+
+Not to be confused with glibc
+
+[Install]
+cd */
+
+if [ -e /usr/include/glib-2.0 ]; then
+    rm -rf /usr/include/glib-2.0.old &&
+    mv -vf /usr/include/glib-2.0{,.old}
+fi
+
+mkdir build &&
+cd    build &&
+
+meson --prefix=/usr      \
+      -Dman=true         \
+      -Dselinux=disabled \
+      ..                 &&
+ninja &&
+
+ninja install &&
+
+mkdir -p /usr/share/doc/glib-2.66.7 &&
+cp -r ../docs/reference/{NEWS,gio,glib,gobject} /usr/share/doc/glib-2.66.7 || exit 1
+ypkg install shared-mime-info desktop-file-utils

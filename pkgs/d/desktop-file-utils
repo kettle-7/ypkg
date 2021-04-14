@@ -1,0 +1,26 @@
+# Simple example package
+Name=Desktop file utils
+Architecture=any
+Version=0.26
+Url=https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.26.tar.xz
+
+[Depends]
+glib
+
+[Description]
+The Desktop File Utils package contains command line utilities for working with
+Desktop entries. These utilities are used by Desktop Environments and other
+applications to manipulate the MIME-types application databases and help adhere
+to the Desktop Entry Specification. 
+
+[Install]
+cd */
+mkdir build &&
+cd    build &&
+
+meson --prefix=/usr .. &&
+ninja &&
+ninja install || exit 1
+
+install -vdm755 /usr/share/applications &&
+update-desktop-database /usr/share/applications || exit 1

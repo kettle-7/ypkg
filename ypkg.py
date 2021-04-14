@@ -148,8 +148,6 @@ def padright(s, w):
         return s
     return s + (' ' * (w - len(s)))
 
-#print((packages, flags))
-
 def F_help(stream=sys.stdout):
     n = sys.argv[0] # The name of the executable
     stream.write("""\
@@ -296,7 +294,7 @@ def build(pkg, callerstack=()):
             section = "[Meta]"
             for line in c.splitlines():
                 line = line.strip()
-                if line == "" and section != "[Description]":
+                if line == "" and section not in ["[Description]", "[Install]"]:
                     continue
                 if line.startswith("#") or line.startswith(";"):
                     continue
